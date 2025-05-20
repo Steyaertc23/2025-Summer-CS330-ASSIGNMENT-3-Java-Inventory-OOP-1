@@ -46,7 +46,14 @@ public class Armour extends Item {
      */
     public Armour()
     {
-        // Initialize all data members (including those inherited from Item)
+        super.name = "";
+        this.durability = 0;
+        this.defense = 0;
+        this.material = "";
+        this.modifier = "";
+        this.modiferLevel = 0;
+        this.element = ""; 
+        super.stackable = false;
     }
 
     /**
@@ -57,6 +64,14 @@ public class Armour extends Item {
     public Armour(Armour src)
     {
         // Set and/or copy data members for *this* object based on *src*.
+        super.name = src.name;
+        this.durability = src.durability;
+        this.defense = src.defense;
+        this.material = src.material;
+        this.modifier = src.modifier;
+        this.modiferLevel = src.modiferLevel;
+        this.element = src.element;
+        super.stackable = src.stackable;
     }
 
     /**
@@ -192,6 +207,12 @@ public class Armour extends Item {
         super.name   = snr.next();
 
         // Complete this method
+        this.material = snr.next();
+        this.durability = snr.nextInt();
+        this.defense = snr.nextInt();
+        this.modifier = snr.next();
+        this.modiferLevel = snr.nextInt();
+        this.element = snr.next(); 
     }
 
     /**
@@ -200,8 +221,7 @@ public class Armour extends Item {
     @Override
     public Item clone()
     {
-        // Replace the next line
-        return null;
+        return new Armour(this);
     }
 
     /**
@@ -210,7 +230,28 @@ public class Armour extends Item {
     @Override
     public String toString()
     {
-        return "Implement This Function";
+        StringBuilder strBld = new StringBuilder();
+        strBld.append("  Nme: ")
+              .append(this.name)
+              .append("\n")
+              .append("  Dur: ")
+              .append(this.durability)
+              .append("\n")
+              .append("  Def: ")
+              .append(this.defense)
+              .append("\n")
+              .append("  Mtl: ")
+              .append(this.material)
+              .append("\n")
+              .append("  Mdr: ")
+              .append(this.modifier)
+              .append(" (Lvl ")
+              .append(this.modiferLevel)
+              .append(")\n")
+              .append("  Emt: ")
+              .append(this.element)
+              .append("\n");
+        return strBld.toString();
     }
 }
 
